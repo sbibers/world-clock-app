@@ -14,8 +14,7 @@
   <strong>An elegant, lightweight web application</strong> that combines a real-time world clock, stopwatch, countdown timer, and session history tracking — all built with <strong>vanilla JavaScript, CSS, and semantic HTML</strong>.
 </p>
 
-[🌐 Live Demo](https://sbibers.github.io/world-clock-app/) • [📖 Documentation](#-how-to-use) • [🐛 Report Bug](https://github.com/sbibers/world-clock-app/issues) • [✨ Request Feature](https://github.com/sbibers/world-clock-app/issues)
-
+[🌐 Live Demo](https://sbibers.github.io/world-clock-app/) • [📖 Documentation](#-how-to-use)
 </div>
 
 ---
@@ -94,7 +93,6 @@ world-clock-app/
 │
 ├── 📄 index.html           # Main HTML entry point
 ├── 📄 README.md            # You are here!
-├── 📄 LICENSE              # MIT License
 │
 ├── 🎨 css/
 │   └── styles.css          # All styling and theme definitions
@@ -200,12 +198,6 @@ Please include:
 - Clear description of changes
 - Screenshots (if UI changes)
 - Steps to test your feature
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see the [`LICENSE`](LICENSE) file for details.
 
 ---
 
