@@ -136,6 +136,10 @@ class WorldClock
         
         this.time_element.textContent = time_string;
         this.date_element.textContent = date_string;
+        
+        this.time_element.classList.remove('tick');
+        void this.time_element.offsetWidth;
+        this.time_element.classList.add('tick');
     }
     
     format_time(date)
