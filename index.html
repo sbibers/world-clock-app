@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Salam Baybars">
+    <meta name="description" content="A simple and elegant world clock application with stopwatch, timer, and history tracking features.">
+    <title>Digital Clock & World Time</title>
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="192x192">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="clock-card">
+            <div class="header">
+                <h1 class="app-title">World Clock</h1>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon">🌓</span>
+                </button>
+            </div>
+            
+            <div class="location-info">
+                <span class="selected-city" id="selectedCity">Local Time</span>
+            </div>
+            
+            <div class="clock-display">
+                <div class="time" id="time">00:00:00</div>
+                <div class="date" id="date">Day, Month, Year</div>
+            </div>
+            
+            <div class="additional-features">
+                <div class="feature-tabs">
+                    <button class="tab-btn active" data-tab="clock">Clock</button>
+                    <button class="tab-btn" data-tab="stopwatch">Stopwatch</button>
+                    <button class="tab-btn" data-tab="timer">Timer</button>
+                    <button class="tab-btn" data-tab="history">History</button>
+                </div>
+                
+                <div class="tab-content active" id="clock-tab">
+                    <div class="controls">
+                        <select class="timezone-selector" id="timezoneSelector">
+                    <optgroup label="Americas">
+                        <option value="America/New_York">New York (EST/EDT)</option>
+                        <option value="America/Los_Angeles">Los Angeles (PST/PDT)</option>
+                        <option value="America/Chicago">Chicago (CST/CDT)</option>
+                        <option value="America/Denver">Denver (MST/MDT)</option>
+                        <option value="America/Toronto">Toronto (EST/EDT)</option>
+                        <option value="America/Sao_Paulo">São Paulo (BRT)</option>
+                        <option value="America/Mexico_City">Mexico City (CST/CDT)</option>
+                    </optgroup>
+                    <optgroup label="Europe">
+                        <option value="Europe/London">London (GMT/BST)</option>
+                        <option value="Europe/Paris">Paris (CET/CEST)</option>
+                        <option value="Europe/Berlin">Berlin (CET/CEST)</option>
+                        <option value="Europe/Rome">Rome (CET/CEST)</option>
+                        <option value="Europe/Madrid">Madrid (CET/CEST)</option>
+                        <option value="Europe/Moscow">Moscow (MSK)</option>
+                    </optgroup>
+                    <optgroup label="Asia">
+                        <option value="Asia/Tokyo">Tokyo (JST)</option>
+                        <option value="Asia/Shanghai">Shanghai (CST)</option>
+                        <option value="Asia/Seoul">Seoul (KST)</option>
+                        <option value="Asia/Hong_Kong">Hong Kong (HKT)</option>
+                        <option value="Asia/Singapore">Singapore (SGT)</option>
+                        <option value="Asia/Dubai">Dubai (GST)</option>
+                        <option value="Asia/Amman">Amman (EET)</option>
+                        <option value="Asia/Kolkata">Mumbai (IST)</option>
+                    </optgroup>
+                    <optgroup label="Oceania">
+                        <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                        <option value="Australia/Melbourne">Melbourne (AEST/AEDT)</option>
+                        <option value="Pacific/Auckland">Auckland (NZST/NZDT)</option>
+                    </optgroup>
+                    <optgroup label="Africa">
+                        <option value="Africa/Cairo">Cairo (EET)</option>
+                        <option value="Africa/Johannesburg">Johannesburg (SAST)</option>
+                        <option value="Africa/Lagos">Lagos (WAT)</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                        <option value="local">Local Time</option>
+                        <option value="UTC">UTC (GMT)</option>
+                    </optgroup>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="stopwatch-tab">
+                    <div class="stopwatch-display">
+                        <div class="stopwatch-time" id="stopwatchTime">00:00:00</div>
+                        <div class="stopwatch-controls">
+                            <button class="control-btn" id="startStopBtn">Start</button>
+                            <button class="control-btn" id="resetStopwatchBtn">Reset</button>
+                            <button class="control-btn" id="lapBtn">Lap</button>
+                        </div>
+                        <div class="lap-times" id="lapTimes"></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="timer-tab">
+                    <div class="timer-display">
+                        <div class="timer-time" id="timerTime">00:00:00</div>
+                        <div class="timer-input">
+                            <input type="number" id="hoursInput" placeholder="H" min="0" max="23" value="0">
+                            <span>:</span>
+                            <input type="number" id="minutesInput" placeholder="M" min="0" max="59" value="0">
+                            <span>:</span>
+                            <input type="number" id="secondsInput" placeholder="S" min="0" max="59" value="0">
+                        </div>
+                        <div class="timer-controls">
+                            <button class="control-btn" id="startTimerBtn">Start</button>
+                            <button class="control-btn" id="resetTimerBtn">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="history-tab">
+                    <div class="history-display">
+                        <div class="history-header">
+                            <h3>Timer & Stopwatch History</h3>
+                            <button class="control-btn" id="clearHistoryBtn">Clear History</button>
+                        </div>
+                        <div class="history-sections">
+                            <div class="history-section">
+                                <h4>Timer History</h4>
+                                <div class="history-list" id="timerHistory"></div>
+                            </div>
+                            <div class="history-section">
+                                <h4>Stopwatch Sessions</h4>
+                                <div class="history-list" id="stopwatchHistory"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/WorldClock.js"></script>
+    <script src="js/Stopwatch.js"></script>
+    <script src="js/Timer.js"></script>
+    <script src="js/History.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
